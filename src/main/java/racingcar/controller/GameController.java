@@ -20,6 +20,7 @@ public class GameController {
     public void playing() {
         initCars();
         initRound();
+        start();
     }
 
     private void initCars() {
@@ -60,5 +61,11 @@ public class GameController {
         }
     }
 
+    private void start() {
+
+        for (int i = 0; i < round.getRound(); i++) {
+            carList.progress();
+        }
+    }
 
 }

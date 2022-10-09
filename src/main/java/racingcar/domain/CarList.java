@@ -32,4 +32,8 @@ public class CarList {
         }
         return stringSet;
     }
+
+    public void progress() {
+        carList.forEach(Car::randomMove);
+    }
 }
