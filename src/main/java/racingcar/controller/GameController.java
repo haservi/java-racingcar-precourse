@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import racingcar.domain.Car;
 import racingcar.domain.CarList;
 import racingcar.domain.CarName;
+import racingcar.domain.Round;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,14 +15,12 @@ import static racingcar.common.ConstMessage.INPUT_MOVEMENT_COUNT;
 public class GameController {
 
     private CarList carList;
+    private Round round;
+
     public void playing() {
-        // TODO: 로직 추가
         initCars();
-
-        System.out.println(INPUT_MOVEMENT_COUNT);
-        int movementCount = isValidCount(Console.readLine());
+        initRound();
     }
-
 
     private void initCars() {
         while (this.carList == null) {
@@ -46,8 +45,20 @@ public class GameController {
         return carList;
     }
 
-    private int isValidCount(String readLine) {
-        // TODO: 숫자만 입력되도록 유효성 처리
-        return 0;
+    private void initRound() {
+        while (this.round == null) {
+            inputRound();
+        }
     }
+
+    private void inputRound() {
+        try {
+            System.out.println(INPUT_MOVEMENT_COUNT);
+            round = new Round(Console.readLine());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+
 }

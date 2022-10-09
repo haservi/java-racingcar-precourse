@@ -9,6 +9,7 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+@DisplayName("차량 리스트 테스트")
 class CarListTest {
 
     @Test

@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-
+@DisplayName("차량 이름 테스트")
 class CarNameTest {
 
     @Test
