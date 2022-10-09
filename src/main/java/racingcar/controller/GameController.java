@@ -10,9 +10,6 @@ import racingcar.view.GameView;
 import java.util.ArrayList;
 import java.util.List;
 
-import static racingcar.common.ConstMessage.INPUT_CAR_NAME;
-import static racingcar.common.ConstMessage.INPUT_MOVEMENT_COUNT;
-
 public class GameController {
 
     private CarList carList;
@@ -37,7 +34,7 @@ public class GameController {
 
     private void inputCars() {
         try {
-            System.out.println(INPUT_CAR_NAME);
+            gameView.printInputCarName();
             this.carList = new CarList(setCars(Console.readLine()));
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
@@ -60,27 +57,26 @@ public class GameController {
 
     private void inputRound() {
         try {
-            System.out.println(INPUT_MOVEMENT_COUNT);
-            round = new Round(Console.readLine());
-            System.out.println();
+            gameView.printInputRound();
+            this.round = new Round(Console.readLine());
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
     }
 
     private void start() {
-
-        System.out.println("실행 결과");
+        gameView.printResult();
         for (int i = 0; i < round.getRound(); i++) {
             carList.progress();
             printCarsPosition(carList.getCarList());
+            System.out.println();
         }
-        System.out.print("최종 우승자 : ");
+        List<String> winnerList = carList.getWinnerList();
+        gameView.printWinnerCars(winnerList);
     }
 
     private void printCarsPosition(List<Car> cars) {
         cars.forEach(car -> gameView.printCarPosition(car.getCarName().getCarName(), car.getPosition()));
-        System.out.println();
     }
 
 }
