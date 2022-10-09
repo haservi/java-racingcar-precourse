@@ -5,6 +5,7 @@ import racingcar.domain.Car;
 import racingcar.domain.CarList;
 import racingcar.domain.CarName;
 import racingcar.domain.Round;
+import racingcar.view.GameView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,11 @@ public class GameController {
 
     private CarList carList;
     private Round round;
+    private final GameView gameView;
+
+    public GameController(GameView gameView) {
+        this.gameView = gameView;
+    }
 
     public void playing() {
         initCars();
@@ -56,6 +62,7 @@ public class GameController {
         try {
             System.out.println(INPUT_MOVEMENT_COUNT);
             round = new Round(Console.readLine());
+            System.out.println();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -63,9 +70,17 @@ public class GameController {
 
     private void start() {
 
+        System.out.println("실행 결과");
         for (int i = 0; i < round.getRound(); i++) {
             carList.progress();
+            printCarsPosition(carList.getCarList());
         }
+        System.out.print("최종 우승자 : ");
+    }
+
+    private void printCarsPosition(List<Car> cars) {
+        cars.forEach(car -> gameView.printCarPosition(car.getCarName().getCarName(), car.getPosition()));
+        System.out.println();
     }
 
 }

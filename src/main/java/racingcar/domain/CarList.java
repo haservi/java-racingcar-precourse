@@ -36,4 +36,8 @@ public class CarList {
     public void progress() {
         carList.forEach(Car::randomMove);
     }
+
+    public List<Car> getCarList() {
+        return carList;
+    }
 }
