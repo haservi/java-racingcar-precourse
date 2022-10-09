@@ -11,4 +11,9 @@ public class Car {
         this.carName = carName;
         this.position = 0;
     }
+
+    public CarName getCarName() {
+        return carName;
+    }
+
 }

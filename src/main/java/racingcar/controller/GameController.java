@@ -41,7 +41,7 @@ public class GameController {
     private List<Car> setCars(String readLine) {
         List<Car> carList = new ArrayList<>();
         for (String carName : readLine.trim().split(",")) {
-            carList.add(new Car(new CarName(carName)));
+            carList.add(new Car(new CarName(carName.trim())));
         }
         return carList;
     }
